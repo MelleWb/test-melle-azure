@@ -1,6 +1,7 @@
 import "./App.css";
 import { useState } from "react";
 import Axios from "axios";
+import baseUrl from "./baseUrl";
 
 function App() {
   const [name, setName] = useState("");
@@ -14,7 +15,7 @@ function App() {
   const [employeeList, setEmployeeList] = useState([]);
 
   const addEmployee = () => {
-    Axios.post("http://localhost:8080/create", {
+    Axios.post(`${baseUrl}/create`, {
       name: name,
       age: age,
       country: country,
@@ -35,13 +36,13 @@ function App() {
   };
 
   const getEmployees = () => {
-    Axios.get("http://localhost:8080/employees").then((response) => {
+    Axios.get(`${baseUrl}/employees`).then((response) => {
       setEmployeeList(response.data);
     });
   };
 
   const updateEmployeeWage = (id) => {
-    Axios.put("http://localhost:8080/update", { wage: newWage, id: id }).then(
+    Axios.put(`${baseUrl}/update`, { wage: newWage, id: id }).then(
       (response) => {
         setEmployeeList(
           employeeList.map((val) => {
@@ -62,7 +63,7 @@ function App() {
   };
 
   const deleteEmployee = (id) => {
-    Axios.delete(`http://localhost:8080/delete/${id}`).then((response) => {
+    Axios.delete(`${baseUrl}/delete/${id}`).then((response) => {
       setEmployeeList(
         employeeList.filter((val) => {
           return val.id !== id;

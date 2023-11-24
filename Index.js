@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const mysql = require("mysql2");
 const cors = require("cors");
+const path = require("path");
 
 app.use(cors());
 app.use(express.json());
@@ -68,6 +69,11 @@ app.delete("/delete/:id", (req, res) => {
       res.send(result);
     }
   });
+});
+
+app.use(express.static("./client/build"));
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
 
 app.listen(8080, () => {
