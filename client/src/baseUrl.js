@@ -1,3 +1,3 @@
-const baseUrl = "https://test-melle-app-service.azurewebsites.net";
+const baseUrl = "https://melle-test-azure.azurewebsites.net";
 
 export default baseUrl;
