@@ -146,7 +146,7 @@ function App() {
                     deleteEmployee(val.id);
                   }}
                 >
-                  Delete
+                  delete
                 </button>
               </div>
             </div>
