@@ -1,3 +1,3 @@
-const baseUrl = "http://localhost:8080";
+const baseUrl = "https://test-melle-stage-app.azurewebsites.net";
 
 export default baseUrl;
