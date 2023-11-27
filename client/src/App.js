@@ -15,7 +15,7 @@ function App() {
   const [employeeList, setEmployeeList] = useState([]);
 
   const addEmployee = () => {
-    Axios.post(`${baseUrl}/create`, {
+    Axios.post(`${baseUrl}/api/create`, {
       name: name,
       age: age,
       country: country,
@@ -36,13 +36,13 @@ function App() {
   };
 
   const getEmployees = () => {
-    Axios.get(`${baseUrl}/employees`).then((response) => {
+    Axios.get(`${baseUrl}/api/employees`).then((response) => {
       setEmployeeList(response.data);
     });
   };
 
   const updateEmployeeWage = (id) => {
-    Axios.put(`${baseUrl}/update`, { wage: newWage, id: id }).then(
+    Axios.put(`${baseUrl}/api/update`, { wage: newWage, id: id }).then(
       (response) => {
         setEmployeeList(
           employeeList.map((val) => {
@@ -63,7 +63,7 @@ function App() {
   };
 
   const deleteEmployee = (id) => {
-    Axios.delete(`${baseUrl}/delete/${id}`).then((response) => {
+    Axios.delete(`${baseUrl}/api/delete/${id}`).then((response) => {
       setEmployeeList(
         employeeList.filter((val) => {
           return val.id !== id;
