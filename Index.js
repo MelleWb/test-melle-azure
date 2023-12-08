@@ -3,9 +3,12 @@ const app = express();
 const mysql = require("mysql2");
 const cors = require("cors");
 const path = require("path");
+bodyParser = require("body-parser");
 
 app.use(cors());
 app.use(express.json());
+app.use(express.static(process.cwd() + "/my-app/build/"));
+app.use(bodyParser.json());
 
 const db = mysql.createConnection({
   user: "root",
@@ -71,9 +74,8 @@ app.delete("/api/delete/:id", (req, res) => {
   });
 });
 
-app.use(express.static("./client/build"));
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "./client/build/index.html"));
+  res.sendFile(path.join(__dirname, "./my-app/build/index.html"));
 });
 
 app.listen(8080, () => {
